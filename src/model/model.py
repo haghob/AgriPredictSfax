@@ -13,7 +13,7 @@ from sklearn.impute import SimpleImputer
 import joblib
 
 class AgriPredictSfaxModel:
-    def __init__(self, data_path='/home/haghob/AgriPredictSfax/'):
+    def __init__(self, data_path='/home/haghob/AgriPredictSfax/data/raw/'):
         """Initialise le modèle avec le chemin vers les données."""
         self.data_path = data_path
         self.model = None

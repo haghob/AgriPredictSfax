@@ -1,0 +1,6 @@
+global:
+  scrape_interval: 5s
+scrape_configs:
+  - job_name: "agripredict_monitor"
+    static_configs:
+      - targets: ["app:8000"]
