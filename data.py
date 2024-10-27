@@ -2,18 +2,17 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-# Fonction pour générer des données climatiques
+#fonction pour générer des données climatiques
 def generate_climate_data(start_date, end_date):
     date_range = pd.date_range(start=start_date, end=end_date, freq='D')
     
-    # Génération de données climatiques réalistes pour Sfax
     temperature_avg = np.random.normal(22, 5, len(date_range))
     temperature_min = temperature_avg - np.random.uniform(3, 7, len(date_range))
     temperature_max = temperature_avg + np.random.uniform(3, 7, len(date_range))
     precipitation = np.random.exponential(1, len(date_range))
     humidity = np.random.normal(60, 10, len(date_range)).clip(0, 100)
 
-    # Création du DataFrame avec les données générées
+    #création du DataFrame avec les données générées
     climate_data = pd.DataFrame({
         'date': date_range,
         'temperature_avg': temperature_avg,
@@ -25,7 +24,7 @@ def generate_climate_data(start_date, end_date):
     
     return climate_data
 
-# Fonction pour générer des données sur le sol
+#pour les données sur le sol
 def generate_soil_data(num_fields):
     soil_data = pd.DataFrame({
         'field_id': range(1, num_fields + 1),
@@ -37,7 +36,7 @@ def generate_soil_data(num_fields):
     })
     return soil_data
 
-# Fonction pour générer des données sur les cultures
+#pour les données sur les cultures
 def generate_crop_data(start_date, end_date, num_fields):
     date_range = pd.date_range(start=start_date, end=end_date, freq='M')
     crops = ['blé', 'orge', 'oliviers', 'amandiers']
@@ -58,7 +57,7 @@ def generate_crop_data(start_date, end_date, num_fields):
     
     return pd.DataFrame(crop_data)
 
-# Génération des données
+#génération des données
 start_date = datetime(2020, 1, 1)
 end_date = datetime(2023, 12, 31)
 num_fields = 50
@@ -71,4 +70,4 @@ climate_data.to_csv('climate_data_sfax.csv', index=False)
 soil_data.to_csv('soil_data_sfax.csv', index=False)
 crop_data.to_csv('crop_data_sfax.csv', index=False)
 
-print("Données générées et sauvegardées avec succès.")
+print("Données générées & sauvegardées avec succès.")

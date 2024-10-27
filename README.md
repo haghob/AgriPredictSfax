@@ -14,11 +14,17 @@ Utilisation des données météorologiques locales, des données sur la qualité
 #### ÉTAPE 1 : Collecte des données agricoles locales
 
 
-Données climatiques : Récupère les données historiques de température, précipitations, et humidité de Sfax via des API météorologiques comme OpenWeatherMap.
+### Données climatiques (climate_data_sfax.csv): 
 
-Données sur le sol : Obtiens des données sur la qualité du sol (pH, nutriments, etc.) et les types de cultures plantées dans la région.
+Récupère les données historiques de température, précipitations, et humidité de Sfax via des API météorologiques comme OpenWeatherMap.
 
-Données sur les cultures : Enregistre les informations sur les types de cultures plantées et leur rendement au cours des dernières saisons.
+### Données sur le sol (soil_data_sfax) : 
+Obtiens des données sur la qualité du sol (pH, nutriments, etc.) et les types de cultures plantées dans la région.
+
+### Données sur les cultures (crop_data_sfax.cxv) : 
+Enregistre les informations sur les types de cultures plantées et leur rendement au cours des dernières saisons.
+
+**Remarque : J'ai généré les données nécessaires pour mon projet (fichier data.py) en raison de l'insuffisance de données disponibles**
 
 #### ÉTAPE 2 : Préparation des données 
 

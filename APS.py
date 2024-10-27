@@ -15,15 +15,12 @@ climate_data = pd.read_csv('/home/haghob/AgriPredictSfax/climate_data_sfax.csv',
 
 
 
-# Fusion des données
 combined_data = crop_data.merge(soil_data, on='field_id').merge(climate_data, on='date')
 
-# Sélection des features
 numeric_features = ['temperature_avg', 'temperature_min', 'temperature_max', 'precipitation', 'humidity', 
                     'pH', 'nitrogen', 'phosphorus', 'potassium']
 categorical_features = ['crop_type', 'irrigation', 'soil_type']
 
-# Création de nouvelles features
 combined_data['season'] = pd.cut(combined_data['date'].dt.month, 
                                  bins=[0, 3, 6, 9, 12], 
                                  labels=['Winter', 'Spring', 'Summer', 'Autumn'])
@@ -31,15 +28,11 @@ categorical_features.append('season')
 
 
 
-
-# Séparation des données
 X = combined_data[numeric_features + categorical_features]
 y = combined_data['yield']
 
-# Séparation en ensembles d'entraînement et de test
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Création du préprocesseur
 numeric_transformer = Pipeline(steps=[
     ('imputer', SimpleImputer(strategy='median')),
     ('scaler', StandardScaler())
@@ -56,29 +49,24 @@ preprocessor = ColumnTransformer(
         ('cat', categorical_transformer, categorical_features)
     ])
 
-# Création du pipeline complet
+#création du pipeline complet
 model = Pipeline(steps=[('preprocessor', preprocessor),
                         ('regressor', RandomForestRegressor(n_estimators=100, random_state=42))])
 
-# Entraînement du modèle
 model.fit(X_train, y_train)
 
-# Prédictions
 y_pred = model.predict(X_test)
 
-# Évaluation du modèle
 mse = mean_squared_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
 
 print(f'Mean Squared Error: {mse}')
 print(f'R^2 Score: {r2}')
 
-# Validation croisée
 cv_scores = cross_val_score(model, X, y, cv=5, scoring='r2')
 print(f'Cross-validation R^2 scores: {cv_scores}')
 print(f'Mean CV R^2 score: {np.mean(cv_scores)}')
 
-# Importance des features
 feature_importance = model.named_steps['regressor'].feature_importances_
 feature_names = (numeric_features + 
                  model.named_steps['preprocessor']
