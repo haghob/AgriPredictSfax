@@ -62,6 +62,28 @@ mse = mean_squared_error(y_test, y_pred)
 print(f"Mean Squared Error: {mse:.2f}")
 ```
 
+
+
+
+
+**Performance du modèle :**
+
+
+- R² Score = 0.55 (ou 55%)
+- Mean CV R² score = 0.54 (ou 54%)
+- MSE = 69,494.52
+
+
+**Importance des caractéristiques :**
+
+Les 2 caractéristiques les plus importantes sont :
+
+- crop_type_oliviers (47.30%)
+- ccrop_type_amandiers (12.11%)
+
+
+
+
 #### ÉTAPE 4 : Mise en place du pipeline MLOps
 
 Pour assurer une automatisation et une gestion continue du projet, voici les outils qu'on peut utiliser :
