@@ -27,12 +27,10 @@ On va intégrer et nettoyer ces données pour en faire un jeu de données exploi
 ```bash 
 import pandas as pd
 
-# Chargement des données climatiques et agricoles
-climate_data = pd.read_csv('climate_data_sfax.csv')  # Température, précipitations, etc.
-soil_data = pd.read_csv('soil_quality.csv')  # pH, nutriments
-crop_data = pd.read_csv('crop_yield.csv')  # Types de cultures et rendement
+climate_data = pd.read_csv('climate_data_sfax.csv')  
+soil_data = pd.read_csv('soil_quality.csv')  
+crop_data = pd.read_csv('crop_yield.csv')  
 
-# Fusion des données
 data = pd.merge(climate_data, soil_data, on='region')
 data = pd.merge(data, crop_data, on='season')
 ```
@@ -46,16 +44,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
-# Séparation des données en train et test
 X = data[['temperature', 'precipitation', 'soil_pH', 'nutrients']]
 y = data['crop_yield']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
-# Modèle Random Forest
 model = RandomForestRegressor()
 model.fit(X_train, y_train)
 
-# Prédictions et évaluation
 y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 print(f"Mean Squared Error: {mse:.2f}")
