@@ -6,6 +6,8 @@ services:
       - "5000:5000"
     environment:
       - FLASK_ENV=production
+    volumes:
+      - /home/haghob/AgriPredictSfax/model:/app/model 
   monitoring:
     image: prom/prometheus
     ports:

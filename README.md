@@ -38,7 +38,35 @@ On peut utiliser un modèle de régression linéaire ou un Random Forest pour pr
 
 
 
-
+AgriPredictSfax/
+├── data/
+│   ├── raw/                   #données brutes
+│   │   ├── crop_data_sfax.csv
+│   │   ├── soil_data_sfax.csv
+│   │   └── climate_data_sfax.csv
+│   └── processed/            #données prétraitées
+├── src/
+│   ├── __init__.py
+│   ├── data/
+│   │   ├── __init__.py
+│   │   └── data_generation.py     
+│   ├── model/
+│   │   ├── __init__.py
+│   │   └── model.py              #classe AgriPredictSfaxModel
+│   └── api/
+│       ├── __init__.py
+│       └── app.py                #API Flask
+├── notebooks/
+│   └── APS.ipynb               #notebook de développement
+├── tests/
+│   ├── __init__.py
+│   ├── test_data.py
+│   ├── test_model.py
+│   └── test_api.py
+├── config/
+│   └── config.yaml
+├── requirements.txt
+└── README.md
 
 
 

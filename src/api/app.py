@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 CORS(app) 
 
-MODEL_PATH = 'model.pkl'
+MODEL_PATH = '/home/haghob/AgriPredictSfax/model.pkl'
 REQUIRED_FEATURES = [
     'temperature_avg', 'temperature_min', 'temperature_max', 'precipitation', 
     'humidity', 'pH', 'nitrogen', 'phosphorus', 'potassium',
