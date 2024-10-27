@@ -37,7 +37,7 @@ On peut utiliser un modèle de régression linéaire ou un Random Forest pour pr
 
 
 
-
+```bash
 AgriPredictSfax/
 ├── data/
 │   ├── raw/                   #données brutes
@@ -67,7 +67,7 @@ AgriPredictSfax/
 │   └── config.yaml
 ├── requirements.txt
 └── README.md
-
+```
 
 
 #### ÉTAPE 4 : Mise en place du pipeline MLOps
