@@ -30,56 +30,14 @@ Enregistre les informations sur les types de cultures plantées et leur rendemen
 
 On va intégrer et nettoyer ces données pour en faire un jeu de données exploitable pour l'entraînement d'un modèle prédictif.
 
-```bash 
-import pandas as pd
-
-climate_data = pd.read_csv('climate_data_sfax.csv')  
-soil_data = pd.read_csv('soil_quality.csv')  
-crop_data = pd.read_csv('crop_yield.csv')  
-
-data = pd.merge(climate_data, soil_data, on='region')
-data = pd.merge(data, crop_data, on='season')
-```
 
 ### ÉTAPE 3 : Entraînement d’un modèle de prédiction de rendement agricole
 
 On peut utiliser un modèle de régression linéaire ou un Random Forest pour prédire le rendement basé sur les données climatiques et les caractéristiques du sol.
 
-```bash
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error
-
-X = data[['temperature', 'precipitation', 'soil_pH', 'nutrients']]
-y = data['crop_yield']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-model = RandomForestRegressor()
-model.fit(X_train, y_train)
-
-y_pred = model.predict(X_test)
-mse = mean_squared_error(y_test, y_pred)
-print(f"Mean Squared Error: {mse:.2f}")
-```
 
 
 
-
-
-**Performance du modèle :**
-
-
-- R² Score = 0.55 (ou 55%)
-- Mean CV R² score = 0.54 (ou 54%)
-- MSE = 69,494.52
-
-
-**Importance des caractéristiques :**
-
-Les 2 caractéristiques les plus importantes sont :
-
-- crop_type_oliviers (47.30%)
-- ccrop_type_amandiers (12.11%)
 
 
 
